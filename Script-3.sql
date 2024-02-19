@@ -193,9 +193,22 @@ order by Occupation_Count;
 
 
 /*
- 
+ Pivot the Occupation column in OCCUPATIONS so that each Name is sorted 
+ alphabetically and displayed underneath its corresponding Occupation. 
+ The output column headers should be Doctor, Professor, Singer, 
+ and Actor, respectively.
+
+Note: Print NULL when there are no more names corresponding to an occupation.
  */
 
+select 
+    max (case when Occupation = 'Doctor' then Name else NULL end) as Doctor
+    max (case when Occupation = 'Professor' then Name else NULL end) as Professor
+    max (case when Occupation = 'Singer' then Name else NULL end) as Singer
+    max (case when Occupation = 'Actor' then Name else NULL end) as Actor
+from Occupations
+group by Name
+order by Name;
 
 
 
